@@ -12,7 +12,7 @@ def main(args):
     dataset = pt.get_dataset("trec-deep-learning-passages")
     checkpoint="http://www.dcs.gla.ac.uk/~craigm/ecir2021-tutorial/colbert_model_checkpoint.zip"
 
-    indexer = ColBERTIndexer(checkpoint, args.dir, args.index_name, ids=True)
+    indexer = ColBERTIndexer(checkpoint, args.dir, args.index_name, 64.0, ids=True)
     indexer.index(dataset.get_corpus_iter())
 
 if __name__ == '__main__':
