@@ -21,8 +21,8 @@ def main(args):
 
     res = pt.Experiment(
     [bm25, sparse_colbert, dense_e2e],
-    dataset.get_topics(),
-    dataset.get_qrels(),
+    dataset.get_topics(variant='eval'),
+    dataset.get_qrels(variant='eval'),
     eval_metrics=["map", "ndcg_cut_10"],
     names=["BM25", "BM25 >> ColBERT", "Dense ColBERT"]
     )
