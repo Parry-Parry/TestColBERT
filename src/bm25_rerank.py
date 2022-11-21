@@ -25,7 +25,7 @@ def main(args):
     [bm25, sparse_colbert, dense_e2e],
     dataset.get_topics(variant=args.variant),
     dataset.get_qrels(variant=args.variant),
-    eval_metrics=['MRR', "map", "ndcg_cut_10", ],
+    eval_metrics=[RR, "map", "ndcg_cut_10", ],
     names=["BM25", "BM25 >> ColBERT", "Dense ColBERT"]
     )
 
