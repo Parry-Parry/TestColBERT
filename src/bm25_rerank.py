@@ -1,6 +1,7 @@
 import pyterrier as pt
 pt.init()
 from pyterrier_colbert.ranking import ColBERTFactory
+from pyterrier.measures import RR
 import argparse 
 
 parser = argparse.ArgumentParser(description='Build Index')
@@ -21,9 +22,9 @@ def main(args):
 
     res = pt.Experiment(
     [bm25, sparse_colbert, dense_e2e],
-    dataset.get_topics(variant='eval'),
-    dataset.get_qrels(variant='eval'),
-    eval_metrics=["map", "ndcg_cut_10"],
+    dataset.get_topics(variant='dev'),
+    dataset.get_qrels(variant='dev'),
+    eval_metrics=[RR(cutoff=10), "map", "ndcg_cut_10", ],
     names=["BM25", "BM25 >> ColBERT", "Dense ColBERT"]
     )
 
