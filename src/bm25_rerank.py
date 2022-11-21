@@ -10,6 +10,7 @@ parser.add_argument('-checkpoint', type=str, help='Model Checkpoint')
 parser.add_argument('-index_dir', type=str, default=None, help='Where index is stored')
 parser.add_argument('-index_name', type=str, default=None, help='Name of index')
 parser.add_argument('-out', type=str, default=None, help='Output Directory / Name of File')
+parser.add_argument('-variant', type=str, default=None, help='Variant of Dataset to use')
 
 def main(args):
     dataset = pt.get_dataset("trec-deep-learning-passages")
@@ -22,9 +23,9 @@ def main(args):
 
     res = pt.Experiment(
     [bm25, sparse_colbert, dense_e2e],
-    dataset.get_topics(variant='dev'),
-    dataset.get_qrels(variant='dev'),
-    eval_metrics=[RR(cutoff=10), "map", "ndcg_cut_10", ],
+    dataset.get_topics(variant=args.variant),
+    dataset.get_qrels(variant=args.variant),
+    eval_metrics=['MRR', "map", "ndcg_cut_10", ],
     names=["BM25", "BM25 >> ColBERT", "Dense ColBERT"]
     )
 
