@@ -16,7 +16,7 @@ def main(args):
     with open(args.source, 'r') as f:
         df = pd.read_csv(f, sep='\t', header=None, index_col=False, names=cols, dtype=types)
     dataset = ir_datasets.load(args.subset)
-    filter = df['qid'].isin([query.qid for query in dataset.queries_iter()])
+    filter = df['qid'].isin([query.query_id for query in dataset.queries_iter()])
 
     filtered_df = df[filter]
     filtered_df.to_csv(args.out + f'triples.{args.suffix}.tsv', sep='\t', index=False, header=False)
