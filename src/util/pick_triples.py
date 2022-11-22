@@ -29,5 +29,5 @@ def main(args):
         sub_df.to_csv(args.out + f'triples.{args.suffix + str(portion)}.tsv', sep='\t', index=False, header=False)
 
 
-if __name__ -- '__main__':
+if __name__ == '__main__':
     main(parser.parse_args())
