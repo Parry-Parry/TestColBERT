@@ -6,7 +6,7 @@ import ir_datasets
 parser = argparse.ArgumentParser(description='Build Subset of IR Dataset in the form of <qid, docid_a, docid_b>')
 
 parser.add_argument('-source', type=str, default=None, help='Dataset Source')
-parser.add_argument('-subset', type=int, default=None, help='Query file containing ids')
+parser.add_argument('-subset', type=str, default=None, help='Query file containing ids')
 parser.add_argument('-suffix', type=str, default='train', help='Suffix of output name')
 parser.add_argument('-out', type=str, help='Output dir for tsv')
 
