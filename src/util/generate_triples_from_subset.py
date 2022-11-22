@@ -14,7 +14,7 @@ def main(args):
     cols = ['qid', 'docid_a', 'doc_id_b']
     types = {col : np.int32 for col in cols}
     with open(args.source, 'r') as f:
-        df = pd.read_csv(f, sep='\t', header=None, index=False, names=cols, dtype=types)
+        df = pd.read_csv(f, sep='\t', header=None, index_col=False, names=cols, dtype=types)
     dataset = ir_datasets.load(args.subset)
     filter = df['qid'].isin([query.qid for query in dataset.queries_iter()])
 
