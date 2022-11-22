@@ -16,16 +16,14 @@ def main(args):
     dataset = pt.get_dataset("trec-deep-learning-passages")
 
     pytcolbert = ColBERTFactory(args.checkpoint, args.index_dir, args.index_name)
-
-    bm25 = pt.BatchRetrieve.from_dataset('msmarco_passage', 'terrier_stemmed_text', wmodel='BM25', metadata=['docno', 'text'])
-    sparse_colbert = bm25 >> pytcolbert.text_scorer()
+    e2e = pytcolbert.end_to_end()
 
     res = pt.Experiment(
-    [bm25, sparse_colbert],
+    [e2e],
     dataset.get_topics(variant=args.variant),
     dataset.get_qrels(variant=args.variant),
     eval_metrics=[RR, "map", "ndcg_cut_10", ],
-    names=["BM25", "BM25 >> ColBERT"]
+    names=["Dense ColBERT"]
     )
 
     if args.out:

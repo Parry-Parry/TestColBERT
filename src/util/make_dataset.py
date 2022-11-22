@@ -26,7 +26,7 @@ def main(args):
         tmp_df['did_b'].append(triplet.doc_id_b)
 
     tmp_df = pd.DataFrame(tmp_df)
-    tmp_df.to_csv(args.out + 'triples.tsv', sep='\t', index=False, header=False)
+    tmp_df.to_csv(args.out + f'{num_choices}triples.tsv', sep='\t', index=False, header=False)
 
 
 if __name__ -- '__main__':
