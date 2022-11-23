@@ -8,12 +8,12 @@ parser.add_argument('-source', type=str, default=None, help='Dataset Source')
 parser.add_argument('-out', type=str, help='Output dir for New file')
 
 def main(args):
-    cols = ['qid', 'docid_a', 'doc_id_b']
-    types = {col : np.int32 for col in cols}
+    cols = ['qid', 'passage']
+    types = {'qid': int, 'passage': str}
     with open(args.source, 'r') as f:
         df = pd.read_csv(f, sep='\t', header=None, index_col=False, names=cols, dtype=types)
     df['arbitrary'] = str(0)
-    df.to_json(args.out, orient='records', lines=True)
+    df.to_json(args.out, orient='records', lines=True, index=False)
 
 if __name__ == '__main__':
     main(parser.parse_args())
