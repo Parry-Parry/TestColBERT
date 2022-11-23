@@ -1,5 +1,5 @@
-from ColBERT.infra import Run, RunConfig, ColBERTConfig
-from ColBERT import Trainer
+from colbert.infra import Run, RunConfig, ColBERTConfig
+from colbert import Trainer
 import argparse
 
 parser = argparse.ArgumentParser()
