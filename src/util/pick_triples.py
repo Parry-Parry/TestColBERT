@@ -21,7 +21,7 @@ def main(args):
 
     for portion in args.portion:
         if not args.k:
-            num_choices = trunc(len(df) * (args.portion/100))
+            num_choices = trunc(len(df) * (portion/100))
         else:
             num_choices = args.k
         sub_df = df.sample(n=num_choices)

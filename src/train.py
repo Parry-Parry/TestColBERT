@@ -22,7 +22,7 @@ def main(args):
         )
         trainer = Trainer(
             triples=args.dir + f"/triples.{args.suffix}.tsv",
-            queries=args.dir + "/queries.train.tsv",
+            queries=args.dir + "/queries.tsv",
             collection=args.dir + "/collection.tsv",
             config=config,
         )
