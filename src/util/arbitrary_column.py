@@ -13,7 +13,7 @@ def main(args):
     with open(args.source, 'r') as f:
         df = pd.read_csv(f, sep='\t', header=None, index_col=False, names=cols, dtype=types)
     df['arbitrary'] = str(0)
-    df.to_json(args.out, orient='records', lines=True, index=False)
+    df.to_json(args.out, orient='records', lines=True)
 
 if __name__ == '__main__':
     main(parser.parse_args())
