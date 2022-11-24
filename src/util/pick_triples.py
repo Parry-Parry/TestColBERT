@@ -31,7 +31,7 @@ def main(args):
             num_choices = args.k
         sub_df = df.sample(n=num_choices)
 
-        sub_df.to_json(args.out + f'triples.{args.suffix}.jsonl', orient='records', lines=True)
+        sub_df.to_csv(args.out + f'triples.{args.suffix}.tsv', index=False, header='False')
 
 
 if __name__ == '__main__':
