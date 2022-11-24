@@ -22,7 +22,7 @@ def main(args):
     [e2e],
     dataset.get_topics(variant=args.variant),
     dataset.get_qrels(variant=args.variant),
-    eval_metrics=[RR, "map", "ndcg_cut_10", ],
+    eval_metrics=[RR(cutoff=10), "map", "ndcg_cut_10", ],
     names=["Dense ColBERT"]
     )
 
