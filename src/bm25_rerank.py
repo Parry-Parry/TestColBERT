@@ -1,7 +1,7 @@
 import pyterrier as pt
 pt.init()
 from pyterrier_colbert.ranking import ColBERTFactory
-from pyterrier.measures import RR
+from pyterrier.measures import RR, MAP, NDCG
 import argparse 
 
 parser = argparse.ArgumentParser(description='Build Index')
@@ -24,7 +24,7 @@ def main(args):
     [bm25, sparse_colbert],
     dataset.get_topics(variant=args.variant),
     dataset.get_qrels(variant=args.variant),
-    eval_metrics=[RR(cutoff=10), "map", "ndcg_cut_10", ],
+    eval_metrics=[RR(cutoff=10, rel=2), MAP(rel=2), NDCG(cutoff=10, ), ],
     names=["BM25", "BM25 >> ColBERT"]
     )
 
