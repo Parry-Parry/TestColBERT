@@ -24,7 +24,7 @@ def main(args):
     [bm25, sparse_colbert],
     dataset.get_topics(variant=args.variant),
     dataset.get_qrels(variant=args.variant),
-    eval_metrics=[RR(cutoff=10, rel=2), MAP(rel=2), NDCG(cutoff=10)],
+    eval_metrics=[RR(rel=2), MAP(rel=2), NDCG(cutoff=10)],
     names=["BM25", "BM25 >> ColBERT"]
     )
 
@@ -34,7 +34,7 @@ def main(args):
     
     print("No Output Dir Specified printing output...")
     print(res)
-    return 1
+    return 0
 
 
 
